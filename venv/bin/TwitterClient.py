@@ -89,11 +89,11 @@ class TwitterClient(object):
             print("Error : " + str(e))
 
 
-def main():
+def main(string123):
     # creating object of TwitterClient Class
     api = TwitterClient()
     # calling function to get tweets
-    string123 = input("Enter your query:\n")
+    # string123 = input("Enter your query:\n")
     tweets = api.get_tweets(string123, count=200)
 
     # picking positive tweets from tweets
@@ -118,6 +118,3 @@ def main():
         print(tweet['text'])
 
 
-if __name__ == "__main__":
-    # calling main function
-    main()

@@ -1,18 +1,22 @@
 from tkinter import *
+from TwitterClient import main
 
 root = Tk()
+root.title("Twitter Analysis")
 
-topFrame = Frame(root)
-topFrame.pack()
-bottomFrame = Frame(root)
-bottomFrame.pack(side=BOTTOM)
+label = Label(root, text="Enter your query:")
+label.pack(side=LEFT)
+name = StringVar()
+field = Entry(root)
+field.pack(side=LEFT)
 
-label1 = Label(topFrame, text="Enter your text", fg="grey")
-textEnter = Entry(topFrame)
-buttonSubmit = Button(topFrame, text="Submit", fg="black")
 
-label1.pack(side=LEFT)
-textEnter.pack(side=LEFT)
-buttonSubmit.pack(side=LEFT)
+def do_it():
+    return "Hello" + str(name.get())
+
+
+submitButton = Button(root, text="Submit", command=main(do_it))
+submitButton.pack(side=LEFT)
+
 
 root.mainloop()
