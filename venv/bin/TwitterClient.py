@@ -2,6 +2,7 @@ import re
 import tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
+from tkinter import *
 
 
 class TwitterClient(object):
@@ -118,3 +119,24 @@ def main(string123):
         print(tweet['text'])
 
 
+root = Tk()
+root.title("Twitter Analysis")
+root.geometry("400x400")
+title = Label(root, text="Welcome to Twitter Analysis")
+title.pack()
+label = Label(root, text="Enter your query:")
+label.pack(side=LEFT)
+name = StringVar()
+field = Entry(root, textvariable=name)
+field.pack(side=LEFT)
+
+
+def call():
+    main(str(name.get()))
+
+
+submitButton = Button(root, text="Submit", command=call)
+submitButton.pack(side=LEFT)
+
+
+root.mainloop()
