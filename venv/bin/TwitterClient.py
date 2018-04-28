@@ -3,6 +3,11 @@ import tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
 from tkinter import *
+import pandas as pd
+import numpy as np
+from tabulate import tabulate
+
+root = Tk()
 
 
 class TwitterClient(object):
@@ -100,35 +105,36 @@ def main(string123):
     # picking positive tweets from tweets
     ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
     # percentage of positive tweets
-    print("Positive tweets percentage: {} %".format(100 * len(ptweets) / len(tweets)))
+    print("Positive tweets percentage: {0:.2f} %".format(100 * len(ptweets) / len(tweets)))
     # picking negative tweets from tweets
     ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
     # percentage of negative tweets
-    print("Negative tweets percentage: {} %".format(100 * len(ntweets) / len(tweets)))
+    print("Negative tweets percentage: {0:.2f} %".format(100 * len(ntweets) / len(tweets)))
     # percentage of neutral tweets
-    print("Neutral tweets percentage: {} % ".format(100 * (len(tweets) - len(ntweets) - len(ptweets)) / len(tweets)))
+    print("Neutral tweets percentage: {0:.2f} % ".format(100 * (len(tweets) - len(ntweets) - len(ptweets)) / len(tweets)))
 
     # printing first 5 positive tweets
     print("\n\nPositive tweets:")
-    for tweet in ptweets[:100]:
+    for tweet in ptweets[:500]:
         print(tweet['text'])
 
     # printing first 5 negative tweets
     print("\n\nNegative tweets:")
-    for tweet in ntweets[:100]:
+    for tweet in ntweets[:500]:
         print(tweet['text'])
 
 
-root = Tk()
 root.title("Twitter Analysis")
 root.geometry("400x400")
-title = Label(root, text="Welcome to Twitter Analysis")
+title = Label(root, text="Welcome to Twitter Analysis", font=("Times New Roman", 20))
 title.pack()
 label = Label(root, text="Enter your query:")
-label.pack(side=LEFT)
+label.place(x=20, y=50)
+# label.pack(side=LEFT)
 name = StringVar()
 field = Entry(root, textvariable=name)
-field.pack(side=LEFT)
+field.place(x=135, y=50)
+# field.pack(side=LEFT)
 
 
 def call():
@@ -136,7 +142,6 @@ def call():
 
 
 submitButton = Button(root, text="Submit", command=call)
-submitButton.pack(side=LEFT)
-
-
+# submitButton.pack(side=LEFT)
+submitButton.place(x=310, y=45)
 root.mainloop()
