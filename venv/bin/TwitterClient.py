@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 from tabulate import tabulate
 
-# created by: ANIRUDDH SHUKLA 
+# created by: ANIRUDDH SHUKLA
 
 root = Tk()
 
